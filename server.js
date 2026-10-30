@@ -74,7 +74,7 @@ app.use(
         'img-src': ["'self'", 'blob:', 'data:'],
         'style-src': ["'self'"],
         'script-src': ["'self'", 'https://cloud.umami.is'],
-        'connect-src': ["'self'", 'https://cloud.umami.is', 'https://api-gateway.umami.dev'],
+        'connect-src': ["'self'", 'https://gateway.umami.is'],
       },
     },
   })
