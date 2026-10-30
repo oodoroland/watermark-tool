@@ -1,163 +1,151 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Add a watermark to images, free and in batches · Oodo Roland</title>
-    <meta
-      name="description"
-      content="Add a text or logo watermark to one image or up to 20 at once. Pick position, opacity, rotation or tile it across the image. Free, no sign-up."
-    />
-    <link rel="canonical" href="https://tools.oodoroland.com/watermark" />
-    <meta property="og:title" content="Watermark images, free and in batches" />
-    <meta
-      property="og:description"
-      content="Text or logo watermark on one image or a whole batch. Free, no sign-up."
-    />
-    <meta property="og:url" content="https://tools.oodoroland.com/watermark" />
-    <meta property="og:type" content="website" />
-    <link rel="stylesheet" href="/style.css" />
-    <script
-      defer
-      src="https://cloud.umami.is/script.js"
-      data-website-id="86249c74-1880-4860-99bd-c6fa6a474ff8"
-      data-domains="tools.oodoroland.com"
-    ></script>
-  </head>
 
-  <body>
-    <header>
-      <div class="brand">
-        <h1>Watermark Studio</h1>
-        <span
-          >One image or a whole batch: text or logo, any position, rotation,
-          colour.</span
-        >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add a watermark to images, free and in batches · Oodo Roland</title>
+  <meta name="description"
+    content="Add a text or logo watermark to one image or up to 20 at once. Pick position, opacity, rotation or tile it across the image. Free, no sign-up." />
+  <link rel="canonical" href="https://tools.oodoroland.com/watermark" />
+  <meta property="og:title" content="Watermark images, free and in batches" />
+  <meta property="og:description" content="Text or logo watermark on one image or a whole batch. Free, no sign-up." />
+  <meta property="og:url" content="https://tools.oodoroland.com/watermark" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="86249c74-1880-4860-99bd-c6fa6a474ff8"
+    data-domains="tools.oodoroland.com"></script> -->
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="3eb4a219-5116-4a7a-bb3b-afd36eab888e" data-domains="tools.oodoroland.com"></script>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <h1>Watermark Studio</h1>
+      <span>One image or a whole batch: text or logo, any position, rotation,
+        colour.</span>
+    </div>
+    <a class="by" href="https://oodoroland.com">by Oodo Roland ↗</a>
+  </header>
+  <main>
+    <section class="panel">
+      <h2>1 · Images</h2>
+      <div id="drop">
+        Drop images here or click to browse<br /><small>JPEG · PNG · WebP · GIF · AVIF · TIFF</small>
       </div>
-      <a class="by" href="https://oodoroland.com">by Oodo Roland ↗</a>
-    </header>
-    <main>
-      <section class="panel">
-        <h2>1 · Images</h2>
-        <div id="drop">
-          Drop images here or click to browse<br /><small
-            >JPEG · PNG · WebP · GIF · AVIF · TIFF</small
-          >
-        </div>
-        <input id="files" type="file" accept="image/*" multiple hidden />
-        <div id="thumbs"></div>
+      <input id="files" type="file" accept="image/*" multiple hidden />
+      <div id="thumbs"></div>
 
-        <h2 class="step">2 · Watermark</h2>
-        <div class="seg" id="typeSeg">
-          <button data-v="text" class="on">Text</button
-          ><button data-v="image">Logo / image</button>
-        </div>
+      <h2 class="step">2 · Watermark</h2>
+      <div class="seg" id="typeSeg">
+        <button data-v="text" class="on">Text</button><button data-v="image">Logo / image</button>
+      </div>
 
-        <div id="textOpts">
-          <label>Text</label
-          ><input type="text" id="text" value="© Your Brand" maxlength="80" />
-          <div class="row">
-            <div>
-              <label>Font</label>
-              <select id="font">
-                <option>sans-serif</option>
-                <option>Poppins</option>
-                <option>Inter</option>
-                <option>DejaVu Sans</option>
-              </select>
-            </div>
-            <div class="fit">
-              <label>Colour</label
-              ><input type="color" id="color" value="#ffffff" />
-            </div>
-            <div class="fit">
-              <label>Bold</label><input type="checkbox" id="bold" checked />
-            </div>
-          </div>
-        </div>
-        <div id="imgOpts" class="hidden">
-          <label>Logo file (PNG with transparency works best)</label
-          ><input type="file" id="logo" accept="image/*" />
-        </div>
-
-        <label>Size <span class="val" id="sizeV"></span></label
-        ><input type="range" id="size" min="3" max="100" value="30" />
-        <label>Opacity <span class="val" id="opacityV"></span></label
-        ><input type="range" id="opacity" min="5" max="100" value="55" />
-        <label>Rotation <span class="val" id="angleV"></span></label
-        ><input type="range" id="angle" min="-180" max="180" value="0" />
-
-        <label>Position</label>
-        <div class="row row-top">
-          <div class="grid9 fit" id="grid9"></div>
-          <div class="pos-extra">
-            <button data-pos="tile">▦ Tile across image</button
-            ><button data-pos="custom">✥ Custom (click preview)</button>
-          </div>
-        </div>
-        <div id="marginWrap">
-          <label>Edge margin <span class="val" id="marginV"></span></label
-          ><input type="range" id="margin" min="0" max="20" value="3" />
-        </div>
-        <div id="gapWrap" class="hidden">
-          <label>Tile spacing <span class="val" id="gapV"></span></label
-          ><input type="range" id="gap" min="0" max="100" value="40" />
-        </div>
-
-        <h2 class="step">3 · Output</h2>
+      <div id="textOpts">
+        <label>Text</label><input type="text" id="text" value="© Your Brand" maxlength="80" />
         <div class="row">
           <div>
-            <label>Format</label
-            ><select id="format">
-              <option value="original">Keep original</option>
-              <option>jpeg</option>
-              <option>png</option>
-              <option>webp</option>
+            <label>Font</label>
+            <select id="font">
+              <option>sans-serif</option>
+              <option>Poppins</option>
+              <option>Inter</option>
+              <option>DejaVu Sans</option>
             </select>
           </div>
-          <div>
-            <label>Quality <span class="val" id="qualityV"></span></label
-            ><input type="range" id="quality" min="40" max="100" value="85" />
+          <div class="fit">
+            <label>Colour</label><input type="color" id="color" value="#ffffff" />
+          </div>
+          <div class="fit">
+            <label>Bold</label><input type="checkbox" id="bold" checked />
           </div>
         </div>
-        <button class="primary" id="go" disabled>
-          Watermark &amp; download
-        </button>
-        <div id="status" role="status"></div>
-        <p class="privacy">
-          By uploading, you confirm you own these images or have permission to
-          use them, and agree to the <a href="/terms">terms</a>. Images are
-          deleted from the server as soon as your download is ready
-          (<a href="/privacy">privacy</a>).
-        </p>
-      </section>
+      </div>
+      <div id="imgOpts" class="hidden">
+        <label>Logo file (PNG with transparency works best)</label><input type="file" id="logo" accept="image/*" />
+      </div>
 
-      <section class="panel preview-panel">
-        <h2>
-          Preview
-          <span id="pvName"></span>
-        </h2>
-        <div id="stage">
-          <div id="empty">Add an image to see the preview</div>
-          <img id="preview" alt="Preview" />
+      <label>Size <span class="val" id="sizeV"></span></label><input type="range" id="size" min="3" max="100"
+        value="30" />
+      <label>Opacity <span class="val" id="opacityV"></span></label><input type="range" id="opacity" min="5" max="100"
+        value="55" />
+      <label>Rotation <span class="val" id="angleV"></span></label><input type="range" id="angle" min="-180" max="180"
+        value="0" />
+
+      <label>Position</label>
+      <div class="row row-top">
+        <div class="grid9 fit" id="grid9"></div>
+        <div class="pos-extra">
+          <button data-pos="tile">▦ Tile across image</button><button data-pos="custom">✥ Custom (click
+            preview)</button>
         </div>
-        <div id="hint">
-          Preview uses a downscaled copy; the download is full resolution. In
-          Custom mode, click the preview to place the watermark.
+      </div>
+      <div id="marginWrap">
+        <label>Edge margin <span class="val" id="marginV"></span></label><input type="range" id="margin" min="0"
+          max="20" value="3" />
+      </div>
+      <div id="gapWrap" class="hidden">
+        <label>Tile spacing <span class="val" id="gapV"></span></label><input type="range" id="gap" min="0" max="100"
+          value="40" />
+      </div>
+
+      <h2 class="step">3 · Output</h2>
+      <div class="row">
+        <div>
+          <label>Format</label><select id="format">
+            <option value="original">Keep original</option>
+            <option>jpeg</option>
+            <option>png</option>
+            <option>webp</option>
+          </select>
         </div>
-      </section>
-    </main>
+        <div>
+          <label>Quality <span class="val" id="qualityV"></span></label><input type="range" id="quality" min="40"
+            max="100" value="85" />
+        </div>
+      </div>
+      <button class="primary" id="go" disabled>
+        Watermark &amp; download
+      </button>
+      <div id="status" role="status"></div>
+      <p class="privacy">
+        By uploading, you confirm you own these images or have permission to
+        use them, and agree to the <a href="/terms">terms</a>. Images are
+        deleted from the server as soon as your download is ready
+        (<a href="/privacy">privacy</a>).
+      </p>
+    </section>
 
-    <footer>
-      <span>Built by <a href="https://oodoroland.com">Oodo Roland</a>, a fullstack engineer who builds and runs production systems.</span>
-      <span class="links">
-        <a href="/terms">Terms</a>
-        <a href="/privacy">Privacy</a>
-        <a href="https://oodoroland.com/toolbox">More tools ↗</a>
-        <a href="https://oodoroland.com/booking">Book a call ↗</a>
-      </span>
-    </footer>
+    <section class="panel preview-panel">
+      <h2>
+        Preview
+        <span id="pvName"></span>
+      </h2>
+      <div id="stage">
+        <div id="empty">Add an image to see the preview</div>
+        <img id="preview" alt="Preview" />
+      </div>
+      <div id="hint">
+        Preview uses a downscaled copy; the download is full resolution. In
+        Custom mode, click the preview to place the watermark.
+      </div>
+    </section>
+  </main>
 
-    <script src="/script.js"></script>
-  </body>
+  <footer>
+    <span>Built by <a href="https://oodoroland.com">Oodo Roland</a>, a fullstack engineer who builds and runs production
+      systems.</span>
+    <span class="links">
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="https://oodoroland.com/toolbox">More tools ↗</a>
+      <a href="https://oodoroland.com/booking">Book a call ↗</a>
+    </span>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+
 </html>
